@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر يومك</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --card-bg: #ffffff;
+            --text-main: #222222;
+            --text-muted: #777777;
+            --border-color: #f0f0f0;
+            --primary-color: #0070ba;
+            --primary-hover: #005ea6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-align: center;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .product-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+
+        .product-title {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #10b981;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .sub-price {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .btn-paypal {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-paypal:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .contact-section {
+            text-align: center;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .contact-section p {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .phone-number {
+            font-weight: 700;
+            color: var(--text-main);
+            direction: ltr;
+            display: inline-block;
+            margin-bottom: 16px !important;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>متجر يومك</h1>
+        <p>قريباً... ❤️</p>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+            
+            <!-- خيار التبرع الأول: 5 ريال -->
+            <div class="product-card">
+                <div class="product-icon">☕</div>
+                <h3 class="product-title">تبرع ودعم للمشروع</h3>
+                <div class="product-price">5.00 ريال</div>
+                <div class="sub-price">( ~$1.33 USD )</div>
+                <a href="https://paypal.me/SalmAboqht/1.33USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
+            </div>
+
+            <!-- خيار التبرع الثاني: 10 ريال -->
+            <div class="product-card">
+                <div class="product-icon">⭐</div>
+                <h3 class="product-title">تبرع ودعم للمشروع</h3>
+                <div class="product-price">10.00 ريال</div>
+                <div class="sub-price">( ~$2.67 USD )</div>
+                <a href="https://paypal.me/SalmAboqht/2.67USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
+            </div>
+
+        </div>
+
+        <!-- تواصل واتساب -->
+        <div class="contact-section">
+            <p>لأي استفسارات أو تواصل مباشر مع المطور</p>
+            <p class="phone-number">0560983152</p>
+            <div>
+                <a href="https://wa.me/966560983152" target="_blank" class="btn-whatsapp">تواصل عبر الواتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 متجر يومك - جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
