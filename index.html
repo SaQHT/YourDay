@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر يومك</title>
+    <title>متجر يومك - المنتجات والدعم</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -50,13 +50,13 @@
         }
 
         .container {
-            max-width: 750px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
             margin-bottom: 40px;
         }
@@ -69,6 +69,9 @@
             padding: 32px 24px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card:hover {
@@ -88,17 +91,24 @@
             font-weight: 700;
         }
 
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
         .product-price {
             font-size: 1.5rem;
             color: #10b981;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .sub-price {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .btn-paypal {
@@ -169,38 +179,48 @@
 
     <header>
         <h1>متجر يومك</h1>
-        <p>قريباً... ❤️</p>
+        <p>منتجات رقمية وحزم برمجة 🚀</p>
     </header>
 
     <div class="container">
         <div class="products-grid">
             
-            <!-- خيار التبرع الأول: 5 ريال -->
+            <!-- المنتج الأول: حزمة روبلوكس 2018 -->
             <div class="product-card">
-                <div class="product-icon">☕</div>
-                <h3 class="product-title">تبرع ودعم للمشروع</h3>
-                <div class="product-price">5.00 ريال</div>
-                <div class="sub-price">( ~$1.33 USD )</div>
-                <a href="https://paypal.me/SalmAboqht/1.33USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
+                <div>
+                    <div class="product-icon">🎮</div>
+                    <h3 class="product-title">حزمة روبلوكس 2018 الكلاسيكية</h3>
+                    <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم، نظام المابات و R6.</p>
+                </div>
+                <div>
+                    <div class="product-price">2.99 ريال</div>
+                    <div class="sub-price">( ~$0.80 USD )</div>
+                    <a href="https://paypal.me/SalmAboqht/0.80USD" target="_blank" class="btn-paypal">شراء بواسطة PayPal</a>
+                </div>
             </div>
 
-            <!-- خيار التبرع الثاني: 10 ريال -->
+            <!-- خيار التبرع ودعم المشروع -->
             <div class="product-card">
-                <div class="product-icon">⭐</div>
-                <h3 class="product-title">تبرع ودعم للمشروع</h3>
-                <div class="product-price">10.00 ريال</div>
-                <div class="sub-price">( ~$2.67 USD )</div>
-                <a href="https://paypal.me/SalmAboqht/2.67USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
+                <div>
+                    <div class="product-icon">☕</div>
+                    <h3 class="product-title">دعم وتبرع للمشروع</h3>
+                    <p class="product-desc">دعم بسيط للأنشطة وتطوير المشاريع البرمجية القادمة.</p>
+                </div>
+                <div>
+                    <div class="product-price">5.00 ريال</div>
+                    <div class="sub-price">( ~$1.33 USD )</div>
+                    <a href="https://paypal.me/SalmAboqht/1.33USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
+                </div>
             </div>
 
         </div>
 
-        <!-- تواصل واتساب -->
+        <!-- تواصل واتساب وتسليم الملفات -->
         <div class="contact-section">
-            <p>لأي استفسارات أو تواصل مباشر مع المطور</p>
+            <p>بعد الشراء أو لأي استفسارات، تواصل مع المطور للاستلام المباشر:</p>
             <p class="phone-number">0560983152</p>
             <div>
-                <a href="https://wa.me/966560983152" target="_blank" class="btn-whatsapp">تواصل عبر الواتساب</a>
+                <a href="https://wa.me/966560983152" target="_blank" class="btn-whatsapp">تواصل عبر الواتساب للاستلام</a>
             </div>
         </div>
     </div>
