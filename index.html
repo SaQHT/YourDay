@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر يومك</title>
+    <title>الشروط والأحكام وسياسة الاسترجاع - متجر يومك</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #fafafa;
             --card-bg: #ffffff;
             --text-main: #222222;
-            --text-muted: #777777;
-            --border-color: #f0f0f0;
+            --text-muted: #666666;
+            --border-color: #eee;
             --primary-color: #0070ba;
-            --primary-hover: #005ea6;
         }
 
         * {
@@ -26,150 +25,78 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.8;
             padding: 40px 20px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
         .container {
-            max-width: 850px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+        header {
+            margin-bottom: 30px;
         }
 
-        .product-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            text-align: center;
-            padding: 32px 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-
-        .product-icon {
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-        }
-
-        .product-title {
-            font-size: 1.15rem;
-            color: var(--text-main);
-            margin-bottom: 8px;
+        .back-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
             font-weight: 700;
-        }
-
-        .product-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
             margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
-            color: #10b981;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .sub-price {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .btn-paypal {
-            display: block;
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-weight: 700;
             font-size: 0.95rem;
-            transition: background 0.2s ease;
         }
 
-        .btn-paypal:hover {
-            background-color: var(--primary-hover);
+        .back-link:hover {
+            text-decoration: underline;
         }
 
-        .contact-section {
-            text-align: center;
+        h1 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .info-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
 
-        .contact-section p {
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .phone-number {
-            font-weight: 700;
+        .info-card h2 {
+            font-size: 1.2rem;
             color: var(--text-main);
-            direction: ltr;
-            display: inline-block;
-            margin-bottom: 16px !important;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 8px;
         }
 
-        .btn-whatsapp {
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-weight: 700;
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card ul li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 12px;
             font-size: 0.95rem;
-            transition: opacity 0.2s ease;
+            color: var(--text-main);
         }
 
-        .btn-whatsapp:hover {
-            opacity: 0.9;
+        .info-card ul li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
             font-size: 0.85rem;
             color: var(--text-muted);
         }
@@ -177,57 +104,47 @@
 </head>
 <body>
 
-    <header>
-        <h1>متجر يومك</h1>
-        <p>منتجات رقمية وحزم برمجة 🚀</p>
-    </header>
-
     <div class="container">
-        <div class="products-grid">
-            
-            <!-- المنتج الأول: حزمة روبلوكس 2018 -->
-            <div class="product-card">
-                <div>
-                    <div class="product-icon">🎮</div>
-                    <h3 class="product-title">حزمة روبلوكس 2018 الكلاسيكية</h3>
-                    <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم،   R6.</p>
-                </div>
-                <div>
-                    <div class="product-price">2.99 ريال</div>
-                    <div class="sub-price">( ~$0.80 USD )</div>
-                    <a href="https://paypal.me/SalmAboqht/0.80USD" target="_blank" class="btn-paypal">شراء بواسطة PayPal</a>
-                </div>
-            </div>
+        <header>
+            <a href="index.html" class="back-link">← العودة للمتجر الرئيسي</a>
+            <h1>الشروط والأحكام وسياسة الاستخدام</h1>
+        </header>
 
-            <!-- خيار التبرع ودعم المشروع -->
-            <div class="product-card">
-                <div>
-                    <div class="product-icon">☕</div>
-                    <h3 class="product-title">دعم وتبرع للمشروع</h3>
-                    <p class="product-desc">دعم بسيط للأنشطة وتطوير المشاريع البرمجية القادمة.</p>
-                </div>
-                <div>
-                    <div class="product-price">5.00 ريال</div>
-                    <div class="sub-price">( ~$1.33 USD )</div>
-                    <a href="https://paypal.me/SalmAboqht/1.33USD" target="_blank" class="btn-paypal">تبرع بواسطة PayPal</a>
-                </div>
-            </div>
-
+        <!-- كيفية الطلب -->
+        <div class="info-card">
+            <h2>🛒 كيفية الطلب والاستلام؟</h2>
+            <ul>
+                <li>اختر المنتج أو فئة الدعم واضغط على زر الدفع بواسطة PayPal.</li>
+                <li>بعد إتمام الدفع، قم بأخذ لقطة شاشة (Screenshot) لإيصال التحويل.</li>
+                <li>تواصل معنا مباشرة عبر الواتساب وأرسل صورة الإيصال.</li>
+                <li>سيتم إرسال ملفات المنتج الرقمي (ملف المشروع) إليك مباشرة عبر الواتساب.</li>
+            </ul>
         </div>
 
-        <!-- تواصل واتساب وتسليم الملفات -->
-        <div class="contact-section">
-            <p>بعد الشراء أو لأي استفسارات، تواصل مع المطور للاستلام المباشر:</p>
-            <p class="phone-number">0560983152</p>
-            <div>
-                <a href="https://wa.me/966560983152" target="_blank" class="btn-whatsapp">تواصل عبر الواتساب للاستلام</a>
-            </div>
+        <!-- المنتجات والتبرع -->
+        <div class="info-card">
+            <h2>💡 ما هي المنتجات والتبرع؟</h2>
+            <ul>
+                <li><strong>المنتجات الرقمية:</strong> هي حزم برمجية وسكربتات يتم تطويرها مسبقاً وتستلمها كملفات جاهزة للاستخدام في مشاريعك.</li>
+                <li><strong>التبرع والدعم:</strong> هو مبلغ اختياري يقدمه الداعمون لدعم المطور والاستمرار في تقديم مشاريع وسكربتات مجانية ومطورة.</li>
+            </ul>
         </div>
+
+        <!-- الشروط والاسترجاع -->
+        <div class="info-card">
+            <h2>📜 الشروط والقواعد وسياسة الاسترجاع</h2>
+            <ul>
+                <li><strong>طبيعة المنتجات:</strong> جميع المعروضات هي منتجات برمجية رقمية (Digital Products).</li>
+                <li><strong>سياسة الاسترجاع:</strong> نظراً لأن المنتجات رقمية ويتم إرسال الكود والملفات مباشرة للمشتري، <strong>لا يوجد استرجاع للأموال بعد تسليم الملفات</strong>.</li>
+                <li><strong>حقوق الاستخدام:</strong> يحق للمشتري استخدام السكربت أو الحزمة في ماباته الخاصة، ويمنع إعادة بيع الملفات أو توزيعها مجاناً للغير.</li>
+                <li><strong>الدعم الفني:</strong> يسعدنا مساعدتك عبر الواتساب في حال وجود أي مشكلة أثناء تركيب الحزمة.</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 متجر يومك - جميع الحقوق محفوظة</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2026 متجر يومك - جميع الحقوق محفوظة</p>
-    </footer>
 
 </body>
 </html>
