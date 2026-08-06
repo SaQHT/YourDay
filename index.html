@@ -6,8 +6,8 @@
     <title>متجر يومك</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAbkeyKDVPNIjjWP5xGUTglCqhp141nIbP9Y73InRwzgU_GuscYVf-B6gp7G0QhLDH5ZkK4x86c_AXJuw&currency=USD&enable-funding=card"></script>
+    <!-- PayPal JS SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAbkeyKDVPNIjjWP5xGUTglCqhp141nIbP9Y73InRwzgU_GuscYVf-B6gp7G0QhLDH5ZkK4x86c_AXJuw&currency=USD"></script>
 
     <style>
         :root {
@@ -54,7 +54,6 @@
             margin: 0 auto;
         }
 
-        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -134,7 +133,6 @@
             font-weight: 700;
         }
 
-        /* النافذة الانبثاقية (Modal) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -194,7 +192,6 @@
             background: #ddd;
         }
 
-        /* معرض الصور داخل النافذة */
         .gallery-container {
             width: 100%;
             margin-bottom: 20px;
@@ -266,7 +263,6 @@
             min-height: 100px;
         }
 
-        /* قسم التواصل */
         .contact-section {
             text-align: center;
             background-color: var(--card-bg);
@@ -316,7 +312,6 @@
     </header>
 
     <div class="container">
-        <!-- شبكة المنتجات -->
         <div class="products-grid">
             
             <!-- كارت المنتج الأول -->
@@ -328,7 +323,7 @@
                         <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم، نظام المابات و R6.</p>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">2.99 ريال</span>
+                        <span class="product-price">3.75 ريال</span>
                         <span class="btn-view">عرض والتفاصيل</span>
                     </div>
                 </div>
@@ -343,7 +338,7 @@
                         <p class="product-desc" id="card2-desc">حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا</p>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price" id="card2-price">1.99 ريال</span>
+                        <span class="product-price" id="card2-price">3.75 ريال</span>
                         <span class="btn-view">عرض والتفاصيل</span>
                     </div>
                 </div>
@@ -366,7 +361,6 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
 
-            <!-- معرض الصور -->
             <div class="gallery-container">
                 <img id="modalMainImg" src="" class="main-img" alt="صورة المنتج">
                 <div class="thumbs-grid" id="modalThumbs"></div>
@@ -380,7 +374,6 @@
                 <div class="modal-sub-price" id="modalSubPrice">( ~$0.00 USD )</div>
             </div>
 
-            <!-- أزرار الدفع -->
             <div id="modal-paypal-container"></div>
         </div>
     </div>
@@ -397,8 +390,8 @@
             'product1': {
                 title: '🎮 حزمة روبلوكس 2018 الكلاسيكية',
                 desc: 'حزمة كاملة لإعادة تجربة روبلوكس 2018 القديمة في مابك:\n• Topbar 2018 الكلاسيكي\n• نظام الشات القديم\n• القائمة الرئيسية القديمة والماوس\n• دعم كامل لنظام R6 والخرائط الكلاسيكية.',
-                priceSR: '2.99 ريال',
-                priceUSD: '0.80',
+                priceSR: '3.75 ريال',
+                priceUSD: '1.00',
                 images: [
                     'rbx2018.1.png',
                     'rbx2018.2.png',
@@ -408,8 +401,8 @@
             'product2': {
                 title: '🎮 حزمة روبلوكس 2021 الكلاسيكية',
                 desc: 'حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا',
-                priceSR: '1.99 ريال',
-                priceUSD: '0.40',
+                priceSR: '3.75 ريال',
+                priceUSD: '1.00',
                 images: [
                     'rbx2021.1.png',
                     'rbx2021.2.png'
@@ -492,10 +485,13 @@
                             
                             closeModal();
                         });
+                    },
+                    onError: function (err) {
+                        console.error('PayPal Error:', err);
                     }
                 }).render('#modal-paypal-container');
             } else {
-                container.innerHTML = '<p style="color: red; text-align: center;">تعذر تحميل بوابة الدفع. يرجى التأكد من الاتصال بالإنترنت أو إيقاف حظر الإعلانات.</p>';
+                container.innerHTML = '<p style="color: red; text-align: center;">تعذر تحميل بوابة الدفع. يرجى التأكد من الاتصال بالإنترنت.</p>';
             }
         }
     </script>
