@@ -458,29 +458,46 @@
             container.innerHTML = '';
 
             if (window.paypal) {
-                paypal.Buttons({
-                    style: {
-                        layout: 'vertical',
-                        color:  'gold',
-                        shape:  'rect',
-                        label:  'paypal'
-                    },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            intent: 'CAPTURE',
-                            purchase_units: [{
-                                amount: { 
-                                    currency_code: 'USD',
-                                    value: usdAmount 
-                                },
-                                description: productTitle
-                            }],
-                            application_context: {
-                                shipping_preference: 'NO_SHIPPING',
-                                user_action: 'PAY_NOW'
-                            }
-                        });
-                    },
+                function renderPayPalButtons(usdAmount, productTitle) {
+    const container = document.getElementById('modal-paypal-container');
+    container.innerHTML = '';
+
+    // التأكد من صيغة المبلغ لتجنب خطأ 422 (رقمين عشريين كـ String)
+    const formattedAmount = parseFloat(usdAmount).toFixed(2);
+
+    if (window.paypal) {
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color:  'gold',
+                shape:  'rect',
+                label:  'pay'
+            },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    intent: 'CAPTURE',
+                    purchase_units: [{
+                        amount: { 
+                            currency_code: 'USD',
+                            value: formattedAmount
+                        },
+                        description: productTitle.substring(0, 127) // بايبال يحدد الوصف بـ 127 حرف كحد أقصى
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('تمت عملية الشراء بنجاح، شكراً لك!');
+                    closeModal();
+                });
+            },
+            onError: function (err) {
+                console.error('PayPal Error:', err);
+                alert('حدث خطأ في معالجة الطلب عبر بايبال. تأكد من إعدادات الحساب أو حاول لاحقاً.');
+            }
+        }).render('#modal-paypal-container');
+    }
+}
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
                             alert('تم الدفع بنجاح! تواصل معنا عبر الواتساب للاستلام.');
