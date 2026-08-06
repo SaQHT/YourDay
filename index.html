@@ -6,8 +6,8 @@
     <title>متجر يومك</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- PayPal SDK المحدث ومعالج الأخطاء -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAkiv_hezBjQ_dPHIlzuwN8ATCjZ3s1QwpLxwuWJyt_gXv9Z_gZYpYmnB9INL4QJmabxdgBBNCXfez67U&currency=USD&components=buttons&enable-funding=card"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAkiv_hezBjQ_dPHIlzuwN8ATCjZ3s1QwpLxwuWJyt_gXv9Z_gZYpYmnB9INL4QJmabxdgBBNCXfez67U&currency=USD"></script>
 
     <style>
         :root {
@@ -166,8 +166,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .close-btn {
@@ -219,7 +225,8 @@
             transition: 0.2s;
         }
 
-        .thumb-img.active, .thumb-img:hover {
+        .thumb-img.active, 
+        .thumb-img:hover {
             border-color: var(--primary-color);
             opacity: 1;
         }
@@ -256,7 +263,7 @@
         }
 
         #modal-paypal-container {
-            min-height: 120px;
+            min-height: 150px;
         }
 
         .contact-section {
@@ -297,21 +304,6 @@
             color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
-        }
-        
-        .fallback-btn {
-            display: block;
-            width: 100%;
-            background-color: #0070ba;
-            color: white;
-            text-align: center;
-            padding: 14px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(0,112,186,0.2);
         }
     </style>
 </head>
@@ -396,14 +388,14 @@
                 title: '🎮 حزمة روبلوكس 2018 الكلاسيكية',
                 desc: 'حزمة كاملة لإعادة تجربة روبلوكس 2018 القديمة في مابك:\n• Topbar 2018 الكلاسيكي\n• نظام الشات القديم\n• القائمة الرئيسية القديمة والماوس\n• دعم كامل لنظام R6 والخرائط الكلاسيكية.',
                 priceSR: '2.99 ريال',
-                priceUSD: '0.80',
+                priceUSD: '1.00',
                 images: ['rbx2018.1.png', 'rbx2018.2.png', 'rbx2018.3.png']
             },
             'product2': {
                 title: '🎮 حزمة روبلوكس 2021 الكلاسيكية',
                 desc: 'حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا',
                 priceSR: '1.99 ريال',
-                priceUSD: '1.99', // تنبيه: تم تعديله إلى 1.99 لأن بايبال يرفض المبالغ المجهرية أقل من 0.50$ في بعض الدول
+                priceUSD: '1.00',
                 images: ['rbx2021.1.png', 'rbx2021.2.png']
             }
         };
@@ -457,60 +449,38 @@
             const container = document.getElementById('modal-paypal-container');
             container.innerHTML = '';
 
+            const formattedAmount = parseFloat(usdAmount).toFixed(2);
+
             if (window.paypal) {
-                function renderPayPalButtons(usdAmount, productTitle) {
-    const container = document.getElementById('modal-paypal-container');
-    container.innerHTML = '';
-
-    // التأكد من صيغة المبلغ لتجنب خطأ 422 (رقمين عشريين كـ String)
-    const formattedAmount = parseFloat(usdAmount).toFixed(2);
-
-    if (window.paypal) {
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color:  'gold',
-                shape:  'rect',
-                label:  'pay'
-            },
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    intent: 'CAPTURE',
-                    purchase_units: [{
-                        amount: { 
-                            currency_code: 'USD',
-                            value: formattedAmount
-                        },
-                        description: productTitle.substring(0, 127) // بايبال يحدد الوصف بـ 127 حرف كحد أقصى
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('تمت عملية الشراء بنجاح، شكراً لك!');
-                    closeModal();
-                });
-            },
-            onError: function (err) {
-                console.error('PayPal Error:', err);
-                alert('حدث خطأ في معالجة الطلب عبر بايبال. تأكد من إعدادات الحساب أو حاول لاحقاً.');
-            }
-        }).render('#modal-paypal-container');
-    }
-}
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'pay'
+                    },
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            intent: 'CAPTURE',
+                            purchase_units: [{
+                                amount: { 
+                                    currency_code: 'USD',
+                                    value: formattedAmount
+                                },
+                                description: productTitle.substring(0, 120)
+                            }]
+                        });
+                    },
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
-                            alert('تم الدفع بنجاح! تواصل معنا عبر الواتساب للاستلام.');
+                            alert('تمت عملية الشراء بنجاح، شكراً لك!');
                             closeModal();
                         });
                     },
                     onError: function (err) {
                         console.error('PayPal Error:', err);
-                        // تم إلغاء التبديل بالزر المشبوه لإبقاء الأزرار الرسمية ظاهرة
                     }
                 }).render('#modal-paypal-container');
-            } else {
-                container.innerHTML = '<p style="text-align:center; color:red;">تعذر تحميل بوابة الدفع، يرجى تحديث الصفحة.</p>';
             }
         }
     </script>
