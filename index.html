@@ -463,25 +463,27 @@
                         style: {
                             layout: 'vertical',
                             color:  'gold',
-                            shape:  'rect',
-                            label:  'paypal'
+                            shape:  'rect'
+                        },
+                        onInit: function(data, actions) {
+                            actions.enable();
                         },
                         createOrder: function(data, actions) {
                             return actions.order.create({
+                                intent: 'CAPTURE',
                                 purchase_units: [{
                                     amount: { value: usdAmount },
                                     description: productTitle
-                                }]
+                                }],
+                                application_context: {
+                                    shipping_preference: 'NO_SHIPPING',
+                                    user_action: 'PAY_NOW'
+                                }
                             });
                         },
                         onApprove: function(data, actions) {
                             return actions.order.capture().then(function(details) {
-                                const buyerName = details.payer.name.given_name || 'عميلنا العزيز';
-                                alert(`تم الدفع بنجاح! شكرًا لك ${buyerName}. سيتم تحويلك لنموذج الواتساب لاستلام طلبك.`);
-                                
-                                const message = encodeURIComponent(`مرحباً، لقد قمت بشراء: (${productTitle}) باسم (${buyerName}). أرغب في الاستلام.`);
-                                window.open(`https://wa.me/966560983152?text=${message}`, '_blank');
-                                
+                                alert('تمت عملية الشراء بنجاح شكراً لك، ' + details.payer.name.given_name + '!');
                                 closeModal();
                             });
                         },
