@@ -6,8 +6,8 @@
     <title>متجر يومك</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAkiv_hezBjQ_dPHIlzuwN8ATCjZ3s1QwpLxwuWJyt_gXv9Z_gZYpYmnB9INL4QJmabxdgBBNCXfez67U&currency=USD&components=buttons,card-fields"></script>
+    <!-- PayPal SDK المحدث ومعالج الأخطاء -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAkiv_hezBjQ_dPHIlzuwN8ATCjZ3s1QwpLxwuWJyt_gXv9Z_gZYpYmnB9INL4QJmabxdgBBNCXfez67U&currency=USD&components=buttons&enable-funding=card"></script>
 
     <style>
         :root {
@@ -54,7 +54,6 @@
             margin: 0 auto;
         }
 
-        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -134,7 +133,6 @@
             font-weight: 700;
         }
 
-        /* النافذة الانبثاقية (Modal) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -190,11 +188,6 @@
             justify-content: center;
         }
 
-        .close-btn:hover {
-            background: #ddd;
-        }
-
-        /* معرض الصور داخل النافذة */
         .gallery-container {
             width: 100%;
             margin-bottom: 20px;
@@ -263,10 +256,9 @@
         }
 
         #modal-paypal-container {
-            min-height: 100px;
+            min-height: 120px;
         }
 
-        /* قسم التواصل */
         .contact-section {
             text-align: center;
             background-color: var(--card-bg);
@@ -306,6 +298,21 @@
             text-decoration: none;
             font-weight: bold;
         }
+        
+        .fallback-btn {
+            display: block;
+            width: 100%;
+            background-color: #0070ba;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,112,186,0.2);
+        }
     </style>
 </head>
 <body>
@@ -316,16 +323,13 @@
     </header>
 
     <div class="container">
-        <!-- شبكة المنتجات -->
         <div class="products-grid">
-            
-            <!-- كارت المنتج الأول -->
             <div class="product-card" onclick="openProductModal('product1')">
                 <img src="rbx2018.1.png" alt="حزمة روبلوكس 2018" class="product-card-img">
                 <div class="product-card-body">
                     <div>
                         <h3 class="product-title">🎮 حزمة روبلوكس 2018 الكلاسيكية</h3>
-                        <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم،  R6.</p>
+                        <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم، R6.</p>
                     </div>
                     <div class="product-footer">
                         <span class="product-price">2.99 ريال</span>
@@ -334,12 +338,11 @@
                 </div>
             </div>
 
-            <!-- كارت المنتج الثاني -->
             <div class="product-card" onclick="openProductModal('product2')">
                 <img id="card2-img" src="rbx2021.1.png" alt="حزمة روبلوكس 2021" class="product-card-img">
                 <div class="product-card-body">
                     <div>
-                        <h3 class="product-title" id="card2-title">المنتج غير متوفر</h3>
+                        <h3 class="product-title" id="card2-title">🎮 حزمة روبلوكس 2021 الكلاسيكية</h3>
                         <p class="product-desc" id="card2-desc">حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا</p>
                     </div>
                     <div class="product-footer">
@@ -348,10 +351,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- قسم التواصل -->
         <div class="contact-section">
             <p>بعد الشراء أو لأي استفسارات، تواصل معنا للاستلام المباشر:</p>
             <p class="phone-number">0560983152</p>
@@ -361,12 +362,10 @@
         </div>
     </div>
 
-    <!-- النافذة الانبثاقية (Modal) -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
 
-            <!-- معرض الصور -->
             <div class="gallery-container">
                 <img id="modalMainImg" src="" class="main-img" alt="صورة المنتج">
                 <div class="thumbs-grid" id="modalThumbs"></div>
@@ -380,7 +379,6 @@
                 <div class="modal-sub-price" id="modalSubPrice">( ~$0.00 USD )</div>
             </div>
 
-            <!-- أزرار الدفع -->
             <div id="modal-paypal-container"></div>
         </div>
     </div>
@@ -399,21 +397,14 @@
                 desc: 'حزمة كاملة لإعادة تجربة روبلوكس 2018 القديمة في مابك:\n• Topbar 2018 الكلاسيكي\n• نظام الشات القديم\n• القائمة الرئيسية القديمة والماوس\n• دعم كامل لنظام R6 والخرائط الكلاسيكية.',
                 priceSR: '2.99 ريال',
                 priceUSD: '0.80',
-                images: [
-                    'rbx2018.1.png',
-                    'rbx2018.2.png',
-                    'rbx2018.3.png'
-                ]
+                images: ['rbx2018.1.png', 'rbx2018.2.png', 'rbx2018.3.png']
             },
             'product2': {
                 title: '🎮 حزمة روبلوكس 2021 الكلاسيكية',
                 desc: 'حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا',
                 priceSR: '1.99 ريال',
                 priceUSD: '0.40',
-                images: [
-                    'rbx2021.1.png',
-                    'rbx2021.2.png'
-                ]
+                images: ['rbx2021.1.png', 'rbx2021.2.png']
             }
         };
 
@@ -467,36 +458,57 @@
             container.innerHTML = '';
 
             if (window.paypal) {
-                paypal.Buttons({
-                    style: {
-                        layout: 'vertical',
-                        color:  'gold',
-                        shape:  'rect',
-                        label:  'paypal'
-                    },
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                amount: { value: usdAmount },
-                                description: productTitle
-                            }]
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            const buyerName = details.payer.name.given_name || 'عميلنا العزيز';
-                            alert(`تم الدفع بنجاح! شكرًا لك ${buyerName}. سيتم تحويلك لنموذج الواتساب لاستلام طلبك.`);
-                            
-                            const message = encodeURIComponent(`مرحباً، لقد قمت بشراء: (${productTitle}) باسم (${buyerName}). أرغب في الاستلام.`);
-                            window.open(`https://wa.me/966560983152?text=${message}`, '_blank');
-                            
-                            closeModal();
-                        });
-                    }
-                }).render('#modal-paypal-container');
+                try {
+                    paypal.Buttons({
+                        style: {
+                            layout: 'vertical',
+                            color:  'gold',
+                            shape:  'rect',
+                            label:  'paypal'
+                        },
+                        createOrder: function(data, actions) {
+                            return actions.order.create({
+                                purchase_units: [{
+                                    amount: { value: usdAmount },
+                                    description: productTitle
+                                }]
+                            });
+                        },
+                        onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(details) {
+                                const buyerName = details.payer.name.given_name || 'عميلنا العزيز';
+                                alert(`تم الدفع بنجاح! شكرًا لك ${buyerName}. سيتم تحويلك لنموذج الواتساب لاستلام طلبك.`);
+                                
+                                const message = encodeURIComponent(`مرحباً، لقد قمت بشراء: (${productTitle}) باسم (${buyerName}). أرغب في الاستلام.`);
+                                window.open(`https://wa.me/966560983152?text=${message}`, '_blank');
+                                
+                                closeModal();
+                            });
+                        },
+                        onError: function (err) {
+                            console.error('PayPal Error:', err);
+                            showFallbackButton(usdAmount, productTitle);
+                        }
+                    }).render('#modal-paypal-container');
+                } catch (e) {
+                    showFallbackButton(usdAmount, productTitle);
+                }
             } else {
-                container.innerHTML = '<p style="color: red; text-align: center;">تعذر تحميل بوابة الدفع. يرجى التأكد من الاتصال بالإنترنت أو إيقاف حظر الإعلانات.</p>';
+                showFallbackButton(usdAmount, productTitle);
             }
+        }
+
+        function showFallbackButton(usdAmount, productTitle) {
+            const container = document.getElementById('modal-paypal-container');
+            const paypalEmail = "saqht5@gmail.com";
+            const paypalLink = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&currency_code=USD&amount=${usdAmount}&item_name=${encodeURIComponent(productTitle)}`;
+            
+            container.innerHTML = `
+                <div style="text-align: center; margin-top: 10px;">
+                    <p style="font-size: 0.9rem; color: #555; margin-bottom: 8px;">اضغط على الزر أدناه للدفع عبر PayPal أو البطاقة:</p>
+                    <a href="${paypalLink}" target="_blank" class="fallback-btn">💳 الدفع عبر PayPal / البطاقة البنكية</a>
+                </div>
+            `;
         }
     </script>
 </body>
