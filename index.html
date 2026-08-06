@@ -6,8 +6,8 @@
     <title>متجر يومك</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- PayPal JS SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=BAAbkeyKDVPNIjjWP5xGUTglCqhp141nIbP9Y73InRwzgU_GuscYVf-B6gp7G0QhLDH5ZkK4x86c_AXJuw&currency=USD"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAbkeyKDVPNIjjWP5xGUTglCqhp141nIbP9Y73InRwzgU_GuscYVf-B6gp7G0QhLDH5ZkK4x86c_AXJuw&currency=USD&enable-funding=card"></script>
 
     <style>
         :root {
@@ -17,6 +17,9 @@
             --text-muted: #666666;
             --border-color: #eee;
             --primary-color: #0070ba;
+            --warning-bg: #fee2e2;
+            --warning-border: #f87171;
+            --warning-text: #991b1b;
         }
 
         * {
@@ -30,7 +33,20 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px 20px;
+            padding-bottom: 40px;
+        }
+
+        /* شريط التحذير */
+        .warning-banner {
+            background-color: var(--warning-bg);
+            border-bottom: 2px solid var(--warning-border);
+            color: var(--warning-text);
+            text-align: center;
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(239, 68, 68, 0.15);
         }
 
         header {
@@ -52,8 +68,10 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* شبكة المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -133,6 +151,7 @@
             font-weight: 700;
         }
 
+        /* النافذة الانبثاقية (Modal) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -192,6 +211,7 @@
             background: #ddd;
         }
 
+        /* معرض الصور داخل النافذة */
         .gallery-container {
             width: 100%;
             margin-bottom: 20px;
@@ -263,6 +283,7 @@
             min-height: 100px;
         }
 
+        /* قسم التواصل */
         .contact-section {
             text-align: center;
             background-color: var(--card-bg);
@@ -306,12 +327,18 @@
 </head>
 <body>
 
+    <!-- تحذير إغلاق المتجر والأعطال -->
+    <div class="warning-banner">
+        ⚠️ تنبيه هام: لا تشتري! هناك أعطال في النظام والمتجر متوقف حالياً.
+    </div>
+
     <header>
         <h1>متجر يومك</h1>
-        <p>مغلق</p>
+        <p>حزم برمجية للألعاب الإلكترونية</p>
     </header>
 
     <div class="container">
+        <!-- شبكة المنتجات -->
         <div class="products-grid">
             
             <!-- كارت المنتج الأول -->
@@ -319,11 +346,11 @@
                 <img src="rbx2018.1.png" alt="حزمة روبلوكس 2018" class="product-card-img">
                 <div class="product-card-body">
                     <div>
-                        <h3 class="product-title">غير متوفر</h3>
-                        <p class="product-desc">تم اغلاق المتجر وحذف هذا المنتج</p>
+                        <h3 class="product-title">🎮 حزمة روبلوكس 2018 الكلاسيكية</h3>
+                        <p class="product-desc">تحتوي على: Topbar 2018، الشات القديم، القائمة الكلاسيكية، الماوس القديم، نظام المابات و R6.</p>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price">3.75 ريال</span>
+                        <span class="product-price">2.99 ريال</span>
                         <span class="btn-view">عرض والتفاصيل</span>
                     </div>
                 </div>
@@ -334,11 +361,11 @@
                 <img id="card2-img" src="rbx2021.1.png" alt="حزمة روبلوكس 2021" class="product-card-img">
                 <div class="product-card-body">
                     <div>
-                        <h3 class="product-title" id="card2-title">غير متوفر</h3>
-                        <p class="product-desc" id="card2-desc">تم اغلاق المتجر وحذف هذا المنتج</p>
+                        <h3 class="product-title" id="card2-title">🎮 حزمة روبلوكس 2021 الكلاسيكية</h3>
+                        <p class="product-desc" id="card2-desc">حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا</p>
                     </div>
                     <div class="product-footer">
-                        <span class="product-price" id="card2-price">3.75 ريال</span>
+                        <span class="product-price" id="card2-price">1.99 ريال</span>
                         <span class="btn-view">عرض والتفاصيل</span>
                     </div>
                 </div>
@@ -348,7 +375,7 @@
 
         <!-- قسم التواصل -->
         <div class="contact-section">
-            <p>بعد الشراء أو لأي استفسارات، تواصل معنا للاستلام المباشر:</p> 
+            <p>بعد الشراء أو لأي استفسارات، تواصل معنا للاستلام المباشر:</p>
             <p class="phone-number">0560983152</p>
             <div>
                 <a href="https://wa.me/966560983152" target="_blank" class="btn-whatsapp">تواصل عبر الواتساب للاستلام</a>
@@ -361,6 +388,7 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
 
+            <!-- معرض الصور -->
             <div class="gallery-container">
                 <img id="modalMainImg" src="" class="main-img" alt="صورة المنتج">
                 <div class="thumbs-grid" id="modalThumbs"></div>
@@ -374,6 +402,7 @@
                 <div class="modal-sub-price" id="modalSubPrice">( ~$0.00 USD )</div>
             </div>
 
+            <!-- أزرار الدفع -->
             <div id="modal-paypal-container"></div>
         </div>
     </div>
@@ -386,6 +415,30 @@
     </footer>
 
     <script>
+        const productsData = {
+            'product1': {
+                title: '🎮 حزمة روبلوكس 2018 الكلاسيكية',
+                desc: 'حزمة كاملة لإعادة تجربة روبلوكس 2018 القديمة في مابك:\n• Topbar 2018 الكلاسيكي\n• نظام الشات القديم\n• القائمة الرئيسية القديمة والماوس\n• دعم كامل لنظام R6 والخرائط الكلاسيكية.',
+                priceSR: '2.99 ريال',
+                priceUSD: '0.80',
+                images: [
+                    'rbx2018.1.png',
+                    'rbx2018.2.png',
+                    'rbx2018.3.png'
+                ]
+            },
+            'product2': {
+                title: '🎮 حزمة روبلوكس 2021 الكلاسيكية',
+                desc: 'حزمة روبلوكس 2021 الجديدة! Topbar مخصص والشات وقائمة اللاعبين | لمحبين النوستالجيا',
+                priceSR: '1.99 ريال',
+                priceUSD: '0.40',
+                images: [
+                    'rbx2021.1.png',
+                    'rbx2021.2.png'
+                ]
+            }
+        };
+
         function openProductModal(productId) {
             const product = productsData[productId];
             if (!product) return;
@@ -435,6 +488,13 @@
             const container = document.getElementById('modal-paypal-container');
             container.innerHTML = '';
 
+            // ضبط الحد الأدنى للمبلغ لتفادي خطأ 422
+            let validAmount = parseFloat(usdAmount);
+            if (isNaN(validAmount) || validAmount < 1.00) {
+                validAmount = 1.00;
+            }
+            const finalAmountString = validAmount.toFixed(2);
+
             if (window.paypal) {
                 paypal.Buttons({
                     style: {
@@ -446,7 +506,10 @@
                     createOrder: function(data, actions) {
                         return actions.order.create({
                             purchase_units: [{
-                                amount: { value: usdAmount },
+                                amount: { 
+                                    currency_code: 'USD',
+                                    value: finalAmountString 
+                                },
                                 description: productTitle
                             }]
                         });
@@ -462,12 +525,13 @@
                             closeModal();
                         });
                     },
-                    onError: function (err) {
-                        console.error('PayPal Error:', err);
+                    onError: function(err) {
+                        console.error("PayPal Error:", err);
+                        alert("حدث خطأ أثناء معالجة الدفع. يرجى المحاولة لاحقاً أو التواصل عبر الواتساب.");
                     }
                 }).render('#modal-paypal-container');
             } else {
-                container.innerHTML = '<p style="color: red; text-align: center;">تعذر تحميل بوابة الدفع. يرجى التأكد من الاتصال بالإنترنت.</p>';
+                container.innerHTML = '<p style="color: red; text-align: center;">تعذر تحميل بوابة الدفع. يرجى التأكد من الاتصال بالإنترنت أو إيقاف حظر الإعلانات.</p>';
             }
         }
     </script>
