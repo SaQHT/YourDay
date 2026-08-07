@@ -19,7 +19,7 @@
             color: #000000;
         }
 
-        /* Top Bar Responsive */
+        /* Top Bar */
         .top-bar {
             padding: 15px 5% 0 5%;
             background-color: #ffffff;
@@ -48,12 +48,6 @@
             background-color: #000;
             color: #fff;
             border-color: #000;
-        }
-
-        .social-link.whatsapp:hover {
-            background-color: #25D366;
-            color: #fff;
-            border-color: #25D366;
         }
 
         /* Centered Header */
@@ -89,7 +83,7 @@
             margin-top: 3px;
         }
 
-        /* Main Container & Grid Responsive */
+        /* Main Container */
         .container {
             padding: 25px 5%;
         }
@@ -103,8 +97,9 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+            justify-content: flex-start;
+            gap: 20px;
         }
 
         .product-card {
@@ -114,11 +109,12 @@
             background: #fff;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .image-container {
             width: 100%;
-            height: 150px;
+            height: 140px;
             border-radius: 6px;
             overflow: hidden;
             position: relative;
@@ -143,26 +139,19 @@
             color: #222;
             margin-bottom: 6px;
             text-align: right;
-            font-weight: 500;
         }
 
         .product-price {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #000;
             margin-bottom: 12px;
             text-align: right;
         }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
         .btn-action {
             width: 100%;
-            padding: 9px 0;
+            padding: 8px 0;
             border-radius: 6px;
             font-size: 0.8rem;
             cursor: pointer;
@@ -181,17 +170,7 @@
             color: #fff;
         }
 
-        .btn-action.btn-whatsapp {
-            border-color: #25D366;
-            color: #25D366;
-        }
-
-        .btn-action.btn-whatsapp:hover {
-            background-color: #25D366;
-            color: #fff;
-        }
-
-        /* Modal Gallery Responsive */
+        /* Gallery Modal */
         .modal {
             display: none;
             position: fixed;
@@ -200,7 +179,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.88);
+            background-color: rgba(0,0,0,0.85);
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -212,33 +191,32 @@
         }
 
         .modal-content {
-            max-width: 95%;
-            max-height: 65vh;
+            max-width: 90%;
+            max-height: 70vh;
             border-radius: 8px;
             object-fit: contain;
         }
 
         .modal-close {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 20px;
+            right: 25px;
             color: #fff;
-            font-size: 2.2rem;
+            font-size: 2rem;
             cursor: pointer;
         }
 
         .thumbnails {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             margin-top: 15px;
             overflow-x: auto;
             max-width: 100%;
-            padding: 5px 0;
         }
 
         .thumb {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 6px;
             object-fit: cover;
             cursor: pointer;
@@ -255,17 +233,14 @@
 
         /* Mobile Optimization */
         @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
             .brand-logo {
                 font-size: 2.8rem;
             }
             .brand-name {
                 font-size: 1.3rem;
-            }
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .image-container {
-                height: 180px;
             }
         }
     </style>
@@ -277,8 +252,8 @@
         <a href="https://tiktok.com/@mtjryomk" target="_blank" class="social-link">
             <i class="fab fa-tiktok"></i> تابعنا
         </a>
-        <a href="https://wa.me/966560983152" target="_blank" class="social-link whatsapp">
-            <i class="fab fa-whatsapp"></i> الواتساب
+        <a href="https://wa.me/966560983152" target="_blank" class="social-link">
+            <i class="fab fa-whatsapp"></i> 0560983152
         </a>
     </div>
 
@@ -301,15 +276,12 @@
                 </div>
                 <div class="product-title">حزمة روبلوكس 2018</div>
                 <div class="product-price">2.99 ريال</div>
-                <div class="btn-group">
-                    <a href="https://www.paypal.com/paypalme/yourdaystore/0.80USD" target="_blank" class="btn-action">دفع عبر PayPal</a>
-                    <a href="https://wa.me/966560983152?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B4%D8%B1%D8%A7%D8%A1%20%D8%AD%D8%B2%D9%85%D8%A9%20%D8%B1%D9%88%D8%A8%D9%84%D9%88%D9%83%D8%B3%202018" target="_blank" class="btn-action btn-whatsapp">طلب عبر الواتساب</a>
-                </div>
+                <a href="https://www.paypal.com/paypalme/yourdaystore/0.80USD" target="_blank" class="btn-action">دفع عبر PayPal</a>
             </div>
         </div>
     </div>
 
-    <!-- Image Gallery Modal -->
+    <!-- Gallery Modal -->
     <div class="modal" id="galleryModal">
         <span class="modal-close" onclick="closeGallery()">&times;</span>
         <img class="modal-content" id="mainModalImg" src="" alt="صورة المنتج">
